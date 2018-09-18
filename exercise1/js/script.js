@@ -114,7 +114,7 @@ function draw() {
   clownImageX = clownImageX + xDistance/10;
   clownImageY = clownImageY + yDistance/10;
 
-  //Lets see what Homer
+  //Lets see what Homer thinks
   homerImageX = homerImageX + xDistance/5;
   homerImageY = homerImageY + yDistance/5;
 
@@ -123,7 +123,6 @@ function draw() {
 
   // Display the clown Image
   image(clownImage,clownImageX,clownImageY);
-
 
 
 }
