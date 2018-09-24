@@ -33,6 +33,9 @@ var enemySpeedIncrease = 0.5;
 // How many dodges the player has made
 var dodges = 0;
 
+//Displaying the number of dodges at the top left corner
+var dodgeCounter = "0";
+
 // setup()
 //
 // Make the canvas, position the avatar and anemy
@@ -57,8 +60,13 @@ function setup() {
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-  // A pink background
-  background(255,220,220);
+  // A green background
+  background(220,255,220);
+
+  //Displaying the number of dodges
+  text(dodgeCounter, 30, 40);
+  textSize(30);
+
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -110,6 +118,7 @@ function draw() {
     avatarY = height/2;
     // Reset the dodge counter
     dodges = 0;
+    dodgeCounter = 0;
   }
 
   // Check if the avatar has gone off the screen (cheating!)
@@ -123,12 +132,14 @@ function draw() {
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
+    dodgeCounter = 0;
   }
 
   // Check if the enemy has moved all the way across the screen
   if (enemyX > width) {
     // This means the player dodged so update its dodge statistic
     dodges = dodges + 1;
+    dodgeCounter = dodgeCounter + 1; 
     // Tell them how many dodges they have made
     console.log(dodges + " DODGES!");
     // Reset the enemy's position to the left at a random height
