@@ -17,10 +17,12 @@ var avatarSpeed = 10;
 var avatarVX = 0;
 var avatarVY = 0;
 
+
 // The position and size of the enemy circle
 var enemyX;
 var enemyY;
 var enemySize = 50;
+
 // How much bigger the enemy circle gets with each successful dodge
 var enemySizeIncrease = 5;
 
@@ -33,8 +35,26 @@ var enemySpeedIncrease = 0.5;
 // How many dodges the player has made
 var dodges = 0;
 
-//Displaying the number of dodges at the top left corner
+// Displaying the number of dodges at the top left corner
 var dodgeCounter = "0";
+
+// The image of the boat
+var BoatImage = loadImage("assets/images/Boat.png");
+
+// Added the Iceberg image
+
+var IceImage = loadImage("assets/images/iceberg.png");
+
+// Preparing the images for being used
+function preload() {
+
+//Added the Boat image to preload
+BoatImage = loadImage("assets/images/Boat.png");
+
+//Added the Iceberg image to preload
+IceImage = loadImage("assets/images/iceberg.png");
+
+}
 
 // setup()
 //
@@ -53,6 +73,7 @@ function setup() {
 
   // No stroke so it looks cleaner
   noStroke();
+
 }
 
 // draw()
@@ -61,12 +82,12 @@ function setup() {
 // game over situations.
 function draw() {
   // A green background
-  background(220,255,220);
+  background(120,220,240);
 
   //Displaying the number of dodges
+  fill(255);
   text(dodgeCounter, 30, 40);
   textSize(30);
-
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -105,17 +126,22 @@ function draw() {
   // We do this by checking if the distance between the centre of the enemy
   // and the centre of the avatar is less that their combined radii
   if (dist(enemyX,enemyY,avatarX,avatarY) < enemySize/2 + avatarSize/2) {
+
     // Tell the player they lost
     console.log("YOU LOSE!");
+
     // Reset the enemy's position
     enemyX = 0;
     enemyY = random(0,height);
+
     // Reset the enemy's size and speed
     enemySize = 50;
     enemySpeed = 5;
+
     // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
+
     // Reset the dodge counter
     dodges = 0;
     dodgeCounter = 0;
@@ -133,13 +159,14 @@ function draw() {
     avatarY = height/2;
     dodges = 0;
     dodgeCounter = 0;
+    avatarSpeed = 10;
   }
 
   // Check if the enemy has moved all the way across the screen
   if (enemyX > width) {
     // This means the player dodged so update its dodge statistic
     dodges = dodges + 1;
-    dodgeCounter = dodgeCounter + 1; 
+    dodgeCounter = dodgeCounter + 1;
     // Tell them how many dodges they have made
     console.log(dodges + " DODGES!");
     // Reset the enemy's position to the left at a random height
@@ -148,6 +175,10 @@ function draw() {
     // Increase the enemy's speed and size to make the game harder
     enemySpeed = enemySpeed + enemySpeedIncrease;
     enemySize = enemySize + enemySizeIncrease;
+
+    // the size and the speed of the Boat changes
+    avatarSpeed = random(1,10);
+    avatarSize = random(20,50);
   }
 
   // Display the current number of successful in the console
@@ -156,11 +187,11 @@ function draw() {
   // The player is black
   fill(0);
   // Draw the player as a circle
-  ellipse(avatarX,avatarY,avatarSize,avatarSize);
+  image(BoatImage,avatarX,avatarY,avatarSize,avatarSize);
 
   // The enemy is red
   fill(255,0,0);
   // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
+  image(IceImage,enemyX,enemyY,enemySize,enemySize);
 
 }
