@@ -160,6 +160,7 @@ function draw() {
     dodges = 0;
     dodgeCounter = 0;
     avatarSpeed = 10;
+    avatarSize = 50;
   }
 
   // Check if the enemy has moved all the way across the screen
