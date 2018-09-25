@@ -39,20 +39,20 @@ var dodges = 0;
 var dodgeCounter = 0;
 
 // The image of the boat
-var BoatImage = loadImage("assets/images/Boat.png");
+var boatImage;
 
 // Added the Iceberg image
 
-var IceImage = loadImage("assets/images/iceberg.png");
+var iceImage;
 
 // Preparing the images for being used
 function preload() {
 
 //Added the Boat image to preload
-BoatImage = loadImage("assets/images/Boat.png");
+boatImage = loadImage("assets/images/Boat.png");
 
 //Added the Iceberg image to preload
-IceImage = loadImage("assets/images/iceberg.png");
+iceImage = loadImage("assets/images/iceberg.png");
 
 }
 
@@ -138,6 +138,10 @@ function draw() {
     enemySize = 50;
     enemySpeed = 5;
 
+    //Reset the avatar's size and speed
+    avatarSize = 50
+    avatarSpeed = 10
+
     // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
@@ -155,12 +159,19 @@ function draw() {
     enemyY = random(0,height);
     enemySize = 50;
     enemySpeed = 5;
+
+  // Reset the position of the avatar
     avatarX = width/2;
     avatarY = height/2;
+
+   // Reset the dodge counter
     dodges = 0;
     dodgeCounter = 0;
-    avatarSpeed = 10;
+
+   // Reset the avatar size and speed
     avatarSize = 50;
+    avatarSpeed = 10;
+
   }
 
   // Check if the enemy has moved all the way across the screen
@@ -186,11 +197,9 @@ function draw() {
   console.log(dodges);
 
   // Draw the player as a circle
-  image(BoatImage,avatarX,avatarY,avatarSize,avatarSize);
+  image(boatImage,avatarX,avatarY,avatarSize,avatarSize);
 
-  // The enemy is red
-  fill(255,0,0);
   // Draw the enemy as a circle
-  image(IceImage,enemyX,enemyY,enemySize,enemySize);
+  image(iceImage,enemyX,enemyY,enemySize,enemySize);
 
 }
