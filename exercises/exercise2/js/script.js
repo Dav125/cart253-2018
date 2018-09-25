@@ -36,7 +36,7 @@ var enemySpeedIncrease = 0.5;
 var dodges = 0;
 
 // Displaying the number of dodges at the top left corner
-var dodgeCounter = "0";
+var dodgeCounter = 0;
 
 // The image of the boat
 var BoatImage = loadImage("assets/images/Boat.png");
@@ -185,8 +185,6 @@ function draw() {
   // Display the current number of successful in the console
   console.log(dodges);
 
-  // The player is black
-  fill(0);
   // Draw the player as a circle
   image(BoatImage,avatarX,avatarY,avatarSize,avatarSize);
 
