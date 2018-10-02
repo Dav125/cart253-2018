@@ -144,14 +144,16 @@ function setup() {
   interRectH = 200;
 
 
-    // Once we've displayed all decoys, we choose a location for the target
-    targetX = random(0,width);
-    targetY = random(0,height);
-    targetSize = random(30,300);
+  // Once we've displayed all decoys, we choose a location for the target
+  targetX = random(0,width);
+  targetY = random(0,height);
+  targetSize = random(30,300);
 
   //while (targetX and targetY are inside the UI box) {
   //generate a new random position
   //}
+
+  // The condition of the dog not going behind the interface
   while (targetX>interRectX && targetY< interRectY+interRectH) {
     targetX = random(0,width);
     targetY = random(0,height);
@@ -196,25 +198,21 @@ function draw() {
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
 
-    //The dog appears and moves around
-
+    //The dog popping up
     windogX = random(0,width);
     windogY = random(0,height);
 
+    // The variation of speed of the dogs appearing
     windogSpeed = random(2,100);
     windogVX = random(2,100);
 
-
+    // The speed of the dogs
     windogVX = windogSpeed;
     windogX = windogX + windogVX;
     windogY = windogY + windogVX;
 
-
-
+    // The Apperance of the dogs
     image(windog,windogX,windogY);
-
-
-
 
   }
 }
