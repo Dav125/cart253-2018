@@ -14,6 +14,7 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 var targetX;
 var targetY;
 var targetImage;
+var targetSize;
 
 // The ten decoy images
 var decoyImage1;
@@ -34,6 +35,30 @@ var numDecoys = 100;
 // Keep track of whether they've won
 var gameOver = false;
 
+//Loads the target image in the image
+var lostdog;
+var lostdogX;
+var lostdogY;
+
+// Loads a rectangle interface at the top right corner of the screen
+var interRect;
+var interRectX;
+var interRectY;
+var interRectW;
+var interRectH;
+
+//The dog appears after winning
+var windog;
+var windogX;
+var windogY;
+
+
+// The dog moves randomly when the game is over
+var windogSpeed;
+var windogVX;
+
+
+
 // preload()
 //
 // Loads the target and decoy images before the program starts
@@ -50,6 +75,14 @@ function preload() {
   decoyImage8 = loadImage("assets/images/animals-08.png");
   decoyImage9 = loadImage("assets/images/animals-09.png");
   decoyImage10 = loadImage("assets/images/animals-10.png");
+
+  // Displaying the lost dog image in the interface
+  lostdog = loadImage("assets/images/animals-target.png");
+
+  //Settup the winning dog after the game is gameOver
+  windog = loadImage("assets/images/animals-target.png");
+
+
 }
 
 // setup()
@@ -103,14 +136,51 @@ function setup() {
     }
   }
 
-  // Once we've displayed all decoys, we choose a location for the target
-  targetX = random(0,width);
-  targetY = random(0,height);
+
+  //Preparing the size for the interface
+  interRectX = width - 301;
+  interRectY = 0;
+  interRectW = 300;
+  interRectH = 200;
+
+
+    // Once we've displayed all decoys, we choose a location for the target
+    targetX = random(0,width);
+    targetY = random(0,height);
+    targetSize = random(30,300);
+
+  //while (targetX and targetY are inside the UI box) {
+  //generate a new random position
+  //}
+  while (targetX>interRectX && targetY< interRectY+interRectH) {
+    targetX = random(0,width);
+    targetY = random(0,height);
+  }
+
   // And draw it (this means it will always be on top)
-  image(targetImage,targetX,targetY);
+  image(targetImage,targetX,targetY,targetSize);
+
+
+
 }
 
 function draw() {
+  //Preparing the interface to show the lost dog
+  noStroke();
+  //rect(width-301, 0, 300, 100);
+  fill(220,100,100);
+  rect(interRectX,interRectY, interRectW,interRectH);
+  image(lostdog,interRectX + interRectW /2,interRectY + interRectH/2,interRectW/2,interRectH/2);
+
+  // Position of the lost dog text
+  fill(255);
+  textSize(15);
+  textAlign(CENTER);
+  text("WANTED DOG!",interRectX + interRectW /2,interRectY + interRectH/2+50);
+  noStroke();
+
+
+
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
@@ -125,6 +195,27 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
+    //The dog appears and moves around
+
+    windogX = random(0,width);
+    windogY = random(0,height);
+
+    windogSpeed = random(2,100);
+    windogVX = random(2,100);
+
+
+    windogVX = windogSpeed;
+    windogX = windogX + windogVX;
+    windogY = windogY + windogVX;
+
+
+
+    image(windog,windogX,windogY);
+
+
+
+
   }
 }
 
