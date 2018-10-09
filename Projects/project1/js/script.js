@@ -32,7 +32,7 @@ var preyY;
 var preyRadius = 25;
 var preyVX;
 var preyVY;
-var preyMaxSpeed = 8;
+var preyMaxSpeed = 6;
 // Prey health
 var preyHealth;
 var preyMaxHealth = 100;
