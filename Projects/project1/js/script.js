@@ -32,7 +32,7 @@ var preyY;
 var preyRadius = 25;
 var preyVX;
 var preyVY;
-var preyMaxSpeed = 4;
+var preyMaxSpeed = 8;
 // Prey health
 var preyHealth;
 var preyMaxHealth = 100;
@@ -44,6 +44,26 @@ var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
 
+// Adding a fast music
+var fastMusic;
+
+// Adding a smiley face
+var smiley;
+
+// Adding Candy
+var candy;
+
+// Prepaing the Images and Music
+function preload(){
+  fastMusic = new Audio("assets/sounds/RandomFastMusic.mp3");
+
+  smiley = loadImage("assets/images/Smiley.png");
+
+  candy = loadImage("assets/images/Candy.png");
+
+
+}
+
 // setup()
 //
 // Sets up the basic elements of the game
@@ -54,6 +74,8 @@ function setup() {
 
   setupPrey();
   setupPlayer();
+
+
 }
 
 // setupPrey()
@@ -84,7 +106,7 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(100,100,200);
+  background(0,100,200);
 
   if (!gameOver) {
     handleInput();
@@ -107,6 +129,23 @@ function draw() {
 //
 // Checks arrow keys and adjusts player velocity accordingly
 function handleInput() {
+//Shift is down
+if (keyIsDown(SHIFT)){
+  playerHealth = constrain(playerHealth - 2, 0, playerMaxHealth);
+
+  // Every thing is in Yellow
+  background(255,255,0);
+
+  // Transform into smiley face
+  imageMode(CENTER);
+  tint(255,playerHealth);
+  image(smiley,playerX,playerY);
+
+  //Transform pray into Candy
+  image(candy,preyX,preyY);
+
+}
+
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
     playerVX = -playerMaxSpeed;
@@ -136,6 +175,15 @@ function handleInput() {
 // wraps around the edges.
 function movePlayer() {
   // Update position
+
+  //if (SHIFT) {
+  //  playerspeed+= playervx * shitspeed
+  //} else {
+  // playerX += playerVX;
+  //playerY += playerVY;
+  //}
+
+
   playerX += playerVX;
   playerY += playerVY;
 
@@ -154,6 +202,29 @@ function movePlayer() {
     playerY -= height;
   }
 }
+
+function keyPressed(){
+  console.log("Shift")
+  if (keyCode === SHIFT){
+    console.log("playing music")
+    fastMusic.volume = 0.2;
+    fastMusic.currentTime = 20;
+    fastMusic.play();
+    playerMaxSpeed = playerMaxSpeed * 4;
+    console.log("Yellow")
+
+  }
+
+}
+function keyReleased(){
+  if (keyCode === SHIFT){
+    fastMusic.pause();
+    playerMaxSpeed = playerMaxSpeed / 4;
+
+}
+
+}
+
 
 // updateHealth()
 //
@@ -187,6 +258,8 @@ function checkEating() {
       // Move the "new" prey to a random position
       preyX = random(0,width);
       preyY = random(0,height);
+      preyVX = random(-10, 10);
+      preyVY = random(-10, 10);
       // Give it full health
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
@@ -207,8 +280,9 @@ function movePrey() {
     // and speed of movement
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
-    preyVY = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVX = map(noise(preyVX),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVY = map(noise(preyVY),0,1,-preyMaxSpeed,preyMaxSpeed);
+    //console.log(map(noise(preyVY),0,1,-preyMaxSpeed,preyMaxSpeed))
   }
 
   // Update prey position based on velocity
@@ -235,17 +309,22 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
+  if(!keyIsDown(SHIFT)){
   fill(preyFill,preyHealth);
   ellipse(preyX,preyY,preyRadius*2);
+}
 }
 
 // drawPlayer()
 //
 // Draw the player as an ellipse with alpha based on health
 function drawPlayer() {
+  if(!keyIsDown(SHIFT)){
   fill(playerFill,playerHealth);
   ellipse(playerX,playerY,playerRadius*2);
 }
+}
+
 
 // showGameOver()
 //
@@ -258,4 +337,5 @@ function showGameOver() {
   gameOverText += "You ate " + preyEaten + " prey\n";
   gameOverText += "before you died."
   text(gameOverText,width/2,height/2);
+
 }
