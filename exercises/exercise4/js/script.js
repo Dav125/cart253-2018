@@ -68,8 +68,6 @@ var beepSFX;
 var rightptSide = 255;
 var leftptSide = 255;
 
-var rightHP;
-var leftHP;
 
 ///////////////////// END NEW ///////////////////////
 
@@ -168,17 +166,22 @@ function draw() {
 
   // Right side
 
-  rightHP = rect(530, 30, 20, 20);
+  push();
   fill(rightptSide);
+  rect(130, 30, 20, 20);
   noStroke();
+
 
 
   //Left Side
 
-  leftHP = rect(130, 30, 20, 20);
+
   fill(leftptSide);
+  rect(530, 30, 20, 20);
   noStroke();
 
+
+  pop();
 
   ///////// END NEW ///////////////////////////////////////
 
@@ -309,15 +312,28 @@ function handleBallOffScreen() {
     //////////////// NEW ////////////////////////////////////////
 
 
+
     if (ballRight < 0) {
-    rightptSide = rightptSide - 25;
-    console.log("lose HP");
+      rightptSide = rightptSide - 25;
+      rightptSide = constrain(rightptSide, 0, 255);
+      console.log("Left side lose HP");
+    }
+    else if (ballLeft > width) {
+      leftptSide = leftptSide - 25;
+      leftptSide = constrain(leftptSide, 0, 255);
+      console.log("Right side lose HP");
     }
 
-    else if (ballLeft > width) {
-    leftptSide = leftptSide - 25;
-    console.log("lose HP");
+
+    if(rightptSide === 0) {
+      console.log("Right side wins");
+      reset();
     }
+    else if (leftptSide === 0){
+      console.log("Left side  wins ")
+      reset();
+    }
+
 
 
   }
@@ -326,8 +342,18 @@ function handleBallOffScreen() {
 
 
 
-    /////////////// END NEW /////////////////////////////////////
 
+
+  /////////////// END NEW /////////////////////////////////////
+
+}
+
+function reset(){
+  ball.x = width/2;
+  ball.y = height/2;
+
+  rightptSide = 255;
+  leftptSide = 255;
 }
 
 // displayBall()
