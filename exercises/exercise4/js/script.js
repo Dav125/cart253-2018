@@ -163,24 +163,22 @@ function draw() {
   ////////// NEW /////////////////////////////////////////
 
   //Setting up the HP of each sides
+  //Using push and pop function
 
   // Right side
 
   push();
   fill(rightptSide);
-  rect(130, 30, 20, 20);
+  rect(280, 30, 40, 40);
   noStroke();
 
 
 
   //Left Side
 
-
   fill(leftptSide);
-  rect(530, 30, 20, 20);
+  rect(360, 30, 40, 40);
   noStroke();
-
-
   pop();
 
   ///////// END NEW ///////////////////////////////////////
@@ -212,6 +210,7 @@ function handleInput(paddle) {
   if (keyIsDown(paddle.upKeyCode)) {
     // Move up
     paddle.vy = -paddle.speed;
+
   }
   // Otherwise if the .downKeyCode is being pressed
   else if (keyIsDown(paddle.downKeyCode)) {
@@ -311,8 +310,7 @@ function handleBallOffScreen() {
 
     //////////////// NEW ////////////////////////////////////////
 
-
-
+    // Each time that the ball goes either side, one of them will lose HP
     if (ballRight < 0) {
       rightptSide = rightptSide - 25;
       rightptSide = constrain(rightptSide, 0, 255);
@@ -324,7 +322,7 @@ function handleBallOffScreen() {
       console.log("Right side lose HP");
     }
 
-
+    // The state of the game will reset based on wins
     if(rightptSide === 0) {
       console.log("Right side wins");
       reset();
@@ -334,27 +332,69 @@ function handleBallOffScreen() {
       reset();
     }
 
+    // The trajectory of the ball will change based on HP of each side
+    if(rightptSide < leftptSide) {
+      ball.vx = Math.abs(random(2, ball.speed));
+      ball.vy = Math.abs(random(2, ball.speed));
+    }
+    else if (rightptSide > leftptSide ) {
+      ball.vx = -Math.abs(random(2, ball.speed));
+      ball.vy = -Math.abs(random(2, ball.speed));
+    }
 
+    // Size of the paddle changes
 
-  }
+    // Left Paddle
+    if (rightptSide === 180) {
+      leftPaddle.h = leftPaddle.h - 5;
+    }
+    else if (rightptSide === 105) {
+      leftPaddle.h = leftPaddle.h - 5;
+    }
+    else if (rightptSide ===30) {
+      leftPaddle.h = leftPaddle.h - 5;
+    }
+    // Right Paddle
+    if (leftptSide === 180) {
+      rightPaddle.h = rightPaddle.h - 5;
+    }
+    else if (leftptSide === 105) {
+      rightPaddle.h = rightPaddle.h - 5;
+    }
+    else if (leftptSide === 30) {
+      rightPaddle.h = rightPaddle.h - 5;
+    }
 
-
-
-
-
-
-
-  /////////////// END NEW /////////////////////////////////////
 
 }
-
+}
+// The reset function
 function reset(){
+
+  // Reset the position of the ball
   ball.x = width/2;
   ball.y = height/2;
 
+  // Reset the velocity of the ball
+  ball.vx = ball.speed;
+  ball.vy = ball.speed;
+
+  // Reset the health points
   rightptSide = 255;
   leftptSide = 255;
+
+  // Reset the position of the paddles
+  rightPaddle.y = height/2;
+  leftPaddle.y = height/2;
+
+  // Reset the size of the paddles
+  rightPaddle.h = 70;
+  leftPaddle.h = 70;
+
 }
+
+/////////////// END NEW /////////////////////////////////////
+
 
 // displayBall()
 //
@@ -368,4 +408,9 @@ function displayBall() {
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
   rect(paddle.x,paddle.y,paddle.w,paddle.h);
+
+
+  paddle.y = constrain(paddle.y, 0, height-paddle.h);
+
+
 }
