@@ -9,12 +9,14 @@
 //
 // Written with JavaScript OOP.
 
-///////////////// NEW ///////////////////////////////////////////////////////////
+
 
 // Variable to contain the objects representing our ball and paddles
 var ball;
 var leftPaddle;
 var rightPaddle;
+///////////////// NEW ///////////////////////////////////////////////////////////
+
 var rightScore = 255;
 var leftScore = 255;
 
@@ -49,6 +51,30 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
+//////////////////////////// NEW //////////////////////////////////////////////
+
+// Challenge 02:
+// Display the score
+// Each time that one side scores a point, the other will lose opacity in
+// their hp square
+
+// Right Side square HP
+push();
+fill(rightScore);
+rect(360, 30, 40, 40);
+noStroke();
+
+
+// Left Side square HP
+fill(leftScore);
+noStroke();
+rect(280, 30, 40, 40);
+pop();
+
+
+///////////////// END NEW /////////////////////////////////////////////////////
+
+
   if (ball.isOffScreen()) {
     /////////////////////////// NEW ///////////////////////////////////////////////
 
@@ -57,10 +83,32 @@ function draw() {
         // Right side scores
         console.log("Right side scores a point");
         leftScore = leftScore - 25;
+        leftScore = constrain(leftScore, 0, 255);
+
       }
       else if (ball.x > width){
         console.log("Left side scores a point");
         rightScore = rightScore - 25;
+        rightScore = constrain(rightScore, 0, 255);
+      }
+
+      // The state of the game will reset based on who wins
+      if (rightScore === 0 ) {
+        console.log("Right side wins");
+        rightPaddle.reset();
+        leftPaddle.reset();
+        ball.reset();
+        rightScore = 255;
+        leftScore = 255;
+      }
+
+      else if (leftScore === 0){
+        console.log("Left side wins");
+        rightPaddle.reset();
+        leftPaddle.reset();
+        ball.reset();
+        rightScore = 255;
+        leftScore = 255;
       }
       /////////////////////////// END NEW ///////////////////////////////////////////////
 

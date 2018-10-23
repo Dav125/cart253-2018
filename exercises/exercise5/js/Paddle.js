@@ -7,6 +7,8 @@
 //
 // Sets the properties with the provided arguments or defaults
 function Paddle(x,y,w,h,speed,downKey,upKey) {
+  this.startX = x;
+  this.startY = y;
   this.x = x;
   this.y = y;
   this.vx = 0;
@@ -49,3 +51,14 @@ Paddle.prototype.display = function() {
   fill(255);
   rect(this.x,this.y,this.w,this.h);
 }
+
+////////////////////////////// NEW ////////////////////////////////////////
+
+// Resetting the paddles positions on the either side loses
+
+Paddle.prototype.reset = function(){
+  this.x = this.startX;
+  this.y = this.startY;
+}
+
+////////////////////////////// END NEW ////////////////////////////////////
