@@ -9,10 +9,17 @@
 //
 // Written with JavaScript OOP.
 
+///////////////// NEW ///////////////////////////////////////////////////////////
+
 // Variable to contain the objects representing our ball and paddles
 var ball;
 var leftPaddle;
 var rightPaddle;
+var rightScore = 255;
+var leftScore = 255;
+
+///////////////// END NEW /////////////////////////////////////////////////////
+
 
 // setup()
 //
@@ -43,6 +50,20 @@ function draw() {
   rightPaddle.update();
 
   if (ball.isOffScreen()) {
+    /////////////////////////// NEW ///////////////////////////////////////////////
+
+    // Help keeping track of which side scores a point
+      if (ball.x + ball.size < 0){
+        // Right side scores
+        console.log("Right side scores a point");
+        leftScore = leftScore - 25;
+      }
+      else if (ball.x > width){
+        console.log("Left side scores a point");
+        rightScore = rightScore - 25;
+      }
+      /////////////////////////// END NEW ///////////////////////////////////////////////
+
     ball.reset();
   }
 

@@ -35,10 +35,9 @@ Ball.prototype.update = function () {
   }
 }
 
-/////////////////////////// NEW ///////////////////////////////////////////////
 
 // Challenge 1:
-// Keeping track of the points of each side when the ball hits either side
+// NOTE Keep track of the points of each side when the ball hits either side
 
 
 // isOffScreen()
@@ -46,14 +45,6 @@ Ball.prototype.update = function () {
 // Checks if the ball has moved off the screen and, if so, returns true.
 // Otherwise it returns false.
 Ball.prototype.isOffScreen = function () {
-
-// Help keeping track of which side scores a point
-  if (this.x + this.size < 0){
-    console.log("Right side scores a point");
-  }
-  else if (this.x > width){
-    console.log("Left side scores a point");
-  }
 
   // Check for going off screen and reset if so
   if (this.x + this.size < 0 || this.x > width) {
@@ -63,7 +54,9 @@ Ball.prototype.isOffScreen = function () {
     return false;
   }
 }
-//////////////////////// END NEW ////////////////////////////////////////////
+
+
+
 
 // display()
 //
