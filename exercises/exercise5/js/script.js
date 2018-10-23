@@ -78,6 +78,7 @@ pop();
   if (ball.isOffScreen()) {
     /////////////////////////// NEW ///////////////////////////////////////////////
 
+    // Challenge 02
     // Help keeping track of which side scores a point
       if (ball.x + ball.size < 0){
         // Right side scores
@@ -110,6 +111,23 @@ pop();
         rightScore = 255;
         leftScore = 255;
       }
+
+      // Challenge 03
+      // Launching the ball with a random y velocity toward the
+      // paddle that won the most recent point
+
+      if (rightScore < leftScore){
+        ball.vx = -ball.vx;
+        ball.vy = random(-ball.vy, ball.vy);
+
+      }
+      else if (rightScore > leftScore){
+        ball.vx = -ball.vx;
+        ball.vy = random(-ball.vy, ball.vy);
+
+
+      }
+
       /////////////////////////// END NEW ///////////////////////////////////////////////
 
     ball.reset();
