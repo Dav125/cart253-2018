@@ -31,10 +31,11 @@ function setup() {
   // Create a ball
   ball = new Ball(width/2,height/2,5,5,10,5);
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(width-10,height/2,10,60,10,DOWN_ARROW,UP_ARROW);
+  rightPaddle = new Paddle(width-10,height/2,10,70,10,DOWN_ARROW,UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+  leftPaddle = new Paddle(0,height/2,10,70,10,83,87);
+
 }
 
 // draw()
@@ -51,28 +52,37 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
-//////////////////////////// NEW //////////////////////////////////////////////
+  //////////////////////////// NEW //////////////////////////////////////////////
 
-// Challenge 02:
-// Display the score
-// Each time that one side scores a point, the other will lose opacity in
-// their hp square
+  // Challenge 02:
+  // Display the score
+  // Each time that one side scores a point, the other will lose opacity in
+  // their hp square
 
-// Right Side square HP
-push();
-fill(rightScore);
-rect(360, 30, 40, 40);
-noStroke();
+  // Right Side square HP
+  push();
+  fill(rightScore);
+  rect(440, 30, 40, 40);
+  noStroke();
+
+  // Left Side square HP
+  fill(leftScore);
+  noStroke();
+  rect(140, 30, 40, 40);
+  pop();
+
+  //Challenge 04;
+  //Altering the visual
+
+  // Add a line to seperate screen
+  push();
+  rectMode(CENTER);
+  fill(255,100,100);
+  rect(width/2, height/2, 10, 480);
+  pop();
 
 
-// Left Side square HP
-fill(leftScore);
-noStroke();
-rect(280, 30, 40, 40);
-pop();
-
-
-///////////////// END NEW /////////////////////////////////////////////////////
+  ///////////////// END NEW /////////////////////////////////////////////////////
 
 
   if (ball.isOffScreen()) {
@@ -80,55 +90,52 @@ pop();
 
     // Challenge 02
     // Help keeping track of which side scores a point
-      if (ball.x + ball.size < 0){
-        // Right side scores
-        console.log("Right side scores a point");
-        leftScore = leftScore - 25;
-        leftScore = constrain(leftScore, 0, 255);
+    if (ball.x + ball.size < 0){
+      // Right side scores
+      console.log("Right side scores a point");
+      leftScore = leftScore - 25;
+      leftScore = constrain(leftScore, 0, 255);
 
-      }
-      else if (ball.x > width){
-        console.log("Left side scores a point");
-        rightScore = rightScore - 25;
-        rightScore = constrain(rightScore, 0, 255);
-      }
+    }
+    else if (ball.x > width){
+      console.log("Left side scores a point");
+      rightScore = rightScore - 25;
+      rightScore = constrain(rightScore, 0, 255);
+    }
 
-      // The state of the game will reset based on who wins
-      if (rightScore === 0 ) {
-        console.log("Right side wins");
-        rightPaddle.reset();
-        leftPaddle.reset();
-        ball.reset();
-        rightScore = 255;
-        leftScore = 255;
-      }
+    // The state of the game will reset based on who wins
+    if (rightScore === 0 ) {
+      console.log("Right side wins");
+      rightPaddle.reset();
+      leftPaddle.reset();
+      ball.reset();
+      rightScore = 255;
+      leftScore = 255;
+    }
 
-      else if (leftScore === 0){
-        console.log("Left side wins");
-        rightPaddle.reset();
-        leftPaddle.reset();
-        ball.reset();
-        rightScore = 255;
-        leftScore = 255;
-      }
+    else if (leftScore === 0){
+      console.log("Left side wins");
+      rightPaddle.reset();
+      leftPaddle.reset();
+      ball.reset();
+      rightScore = 255;
+      leftScore = 255;
+    }
 
-      // Challenge 03
-      // Launching the ball with a random y velocity toward the
-      // paddle that won the most recent point
+    // Challenge 03
+    // Launching the ball with a random y velocity toward the
+    // paddle that won the most recent point
+    if (rightScore < leftScore){
+      ball.vx = -ball.vx;
+      ball.vy = random(-ball.speed,ball.speed);
+    }
 
-      if (rightScore < leftScore){
-        ball.vx = -ball.vx;
-        ball.vy = random(-ball.vy, ball.vy);
+    else if (rightScore > leftScore){
+      ball.vx = -ball.vx;
+      ball.vy = random(-ball.speed,ball.speed);
+    }
 
-      }
-      else if (rightScore > leftScore){
-        ball.vx = -ball.vx;
-        ball.vy = random(-ball.vy, ball.vy);
-
-
-      }
-
-      /////////////////////////// END NEW ///////////////////////////////////////////////
+    /////////////////////////// END NEW ///////////////////////////////////////////////
 
     ball.reset();
   }
@@ -139,4 +146,6 @@ pop();
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
+
+
 }
