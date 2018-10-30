@@ -35,7 +35,9 @@ Ball.prototype.updated = function () {
 
 //////////////////////////////////////////////////////// FIX
 // Missing 2(=) signs
-  if (this.y === 0 || this.y + this.size === height) {
+// and
+// 2 extra = signs for this.y this.size and height, I erased 2 = signs.
+  if (this.y === 0 || this.y + this.size = height) {
     this.vy = -this.vy;
   }
 }
