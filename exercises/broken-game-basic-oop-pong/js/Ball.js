@@ -100,7 +100,10 @@ Ball.prototype.handleCollision = function(paddle) {
 // reset()
 //
 // Set position back to the middle of the screen
-Ball.prototype.rest = function () {
+
+////////////////////////////////////////////////// FIX
+//typo with rest, we are supposed to write reset
+Ball.prototype.reset = function () {
   this.x = width/2;
   this.y = height/2;
 }
