@@ -1,5 +1,5 @@
-// Broken Pong game fixed
-// by David Fong
+// Broken Basic OO Pong
+// by Pippin Barr
 //
 // A broken primitive implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
