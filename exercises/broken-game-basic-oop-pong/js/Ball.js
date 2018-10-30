@@ -46,6 +46,7 @@ Ball.prototype.isOffScreen = function () {
 
   ///////////////// Fix
   // typo error with iff, we are supposed to write "if"
+  // there was an extra + after this.x
   if (this.x + this.size < 0 && this.x > width) {
     return true;
   }
@@ -58,7 +59,10 @@ Ball.prototype.isOffScreen = function () {
 //
 // Draw the ball as a rectangle on the screen
 Ball.prototype.display = function () {
-  rect(this.x this.y);
+
+  ////////////////////// FIX
+  // There was a mixing comma, I added a comma(,)
+  rect(this.x, this.y);
 }
 
 // handleCollision(paddle)
