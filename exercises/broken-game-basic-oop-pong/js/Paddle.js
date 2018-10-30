@@ -35,7 +35,10 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 ///////////////////////// FIX
 //typo with proto, we are supposed to write prototype
 Paddle.prototype.handleInput = function() {
-  if (keyDown(upKey)) {
+
+//////////////////////////////// FIX 
+// forgot to add the word "this." to upkey
+  if (keyDown(this.upKey)) {
     this.vy = -this.speed;
   }
   else if (keyDown(downKey)) {
