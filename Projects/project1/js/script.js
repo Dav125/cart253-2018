@@ -38,6 +38,8 @@ var preyHealth;
 var preyMaxHealth = 100;
 // Prey fill color
 var preyFill = 200;
+var preyTX = 0;
+var preyTY = 100;
 
 // Amount of health obtained per frame of "eating" the prey
 var eatHealth = 10;
@@ -280,8 +282,11 @@ function movePrey() {
     // and speed of movement
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(noise(preyVX),0,1,-preyMaxSpeed,preyMaxSpeed);
-    preyVY = map(noise(preyVY),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVX = map(noise(preyTX),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVY = map(noise(preyTY),0,1,-preyMaxSpeed,preyMaxSpeed);
+
+    preyTX += 0.1;
+    preyTY += 0.1;
     //console.log(map(noise(preyVY),0,1,-preyMaxSpeed,preyMaxSpeed))
   }
 
