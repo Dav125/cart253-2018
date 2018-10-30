@@ -14,8 +14,10 @@
 function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.x = x;
   this.y = y;
-  this.xv = 0;
-  this.yv = 0;
+////////////////// FIX
+// typo with xv and yv, we are supposed to write vx and vy respectively
+  this.vx = 0;
+  this.vy = 0;
   this.w = w;
   this.h = h;
   this.speed = speeed;
