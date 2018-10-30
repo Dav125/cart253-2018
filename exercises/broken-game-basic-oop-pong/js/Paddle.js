@@ -20,7 +20,9 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.vy = 0;
   this.w = w;
   this.h = h;
-  this.speed = speeed;
+  ///////////////// FIX
+  // typo with speeed, we are supposed to write speed
+  this.speed = speed;
   this.downKey = downKey;
   this.upKey = upKey;
 }
