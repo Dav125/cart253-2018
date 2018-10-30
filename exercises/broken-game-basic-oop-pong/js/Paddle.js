@@ -50,8 +50,13 @@ Paddle.prototype.handleInput = function() {
   else if (keyIsDown(this.downKey)) {
 ///////////////////////////////// FIX
 // this function needs to go down so, I took off the
-// negative sign from this.speed 
+// negative sign from this.speed
     this.vy = this.speed;
+  }
+///////////////////////////////// FIX
+// the paddle needs to stop
+else {
+  this.vy = 0;
   }
 }
 
