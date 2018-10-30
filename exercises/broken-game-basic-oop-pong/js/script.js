@@ -63,5 +63,8 @@ function draw() {
 
   ball.display();
   leftPaddle.display();
-  rightPaddle.display(;
+
+////////////////////////////////////////////////////// FIX
+// Missed a closing parenthese
+  rightPaddle.display();
 }
