@@ -23,7 +23,9 @@ function Ball(x,y,vx,vy,size,speed) {
 // off left or right side.
 //////////////////////////////////////////////// FIX
 //NOTE faction is supposed to be function
-Ball.prototype.updated = function () {
+//and
+//typo with updated, update is the right function 
+Ball.prototype.update = function () {
   // Update position with velocity
   this.x = this.vx;
   this.y += this.vy;
