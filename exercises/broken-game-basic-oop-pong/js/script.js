@@ -57,7 +57,10 @@ function draw() {
 
   /////////////////////////////////////////////// FIX
   // Missed a curly brackets
-  if (ball.isOffTheScreen()) {
+  // and
+  //ball.isOffThe Screen() is not the right function, the ball.isOffScreen
+  // is the right function
+  if (ball.isOffScreen()) {
     reset();
   }
 
