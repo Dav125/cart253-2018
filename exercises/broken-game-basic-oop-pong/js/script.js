@@ -37,6 +37,9 @@ function setup() {
   // missed a parenthese
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
 
+///////////////////////////////////////////////////// FIX
+// Missed a curly bracket for setup()
+}
 
 // draw()
 //
