@@ -61,7 +61,7 @@ Ball.prototype.isOffScreen = function () {
 Ball.prototype.display = function () {
 
   ////////////////////// FIX
-  // There was a mixing comma, I added a comma(,)
+  // There was a missing comma, I added a comma(,)
   rect(this.x, this.y);
 }
 
