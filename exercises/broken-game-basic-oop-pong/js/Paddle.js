@@ -55,6 +55,14 @@ Paddle.prototype.update = function() {
 // display()
 //
 // Draw the paddle as a rectangle on the screen
-Paddle.prototype.disploy = function()) {
-  rectangle(this.x,this.y,this.w,this.h);
+
+////////////////////////////// FIX
+// typo with disploy, we are supposed to write display
+// and
+// there is an extra parenthese in function, I erased it
+// and
+// wrong code displaying rectangle, we supposed to use rect
+
+Paddle.prototype.display = function() {
+  rect(this.x,this.y,this.w,this.h);
 }
