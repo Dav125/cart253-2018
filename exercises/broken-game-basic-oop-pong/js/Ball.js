@@ -70,7 +70,9 @@ Ball.prototype.display = function () {
 
   ////////////////////// FIX
   // There was a missing comma, I added a comma(,)
-  rect(this.x, this.y);
+  // and (IM AN IDIOT)
+  // I FORGOT ABOUT THE SIZE OF THE BALL
+  rect(this.x, this.y, this.size, this.size);
 }
 
 // handleCollision(paddle)

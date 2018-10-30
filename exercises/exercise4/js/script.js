@@ -354,6 +354,7 @@ function handleBallOffScreen() {
     else if (rightptSide ===30) {
       leftPaddle.h = leftPaddle.h - 5;
     }
+
     // Right Paddle
     if (leftptSide === 180) {
       rightPaddle.h = rightPaddle.h - 5;
