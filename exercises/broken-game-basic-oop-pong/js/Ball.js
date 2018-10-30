@@ -55,7 +55,9 @@ Ball.prototype.isOffScreen = function () {
   ///////////////// Fix
   // typo error with iff, we are supposed to write "if"
   // there was an extra + after this.x
-  if (this.x + this.size < 0 && this.x > width) {
+  // and
+  //typo with && we are supposed to use || instead
+  if (this.x + this.size < 0 || this.x > width) {
     return true;
   }
   else {
