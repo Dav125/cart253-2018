@@ -28,7 +28,7 @@ function setup() {
   // Create a ball
 /////////////////////////////////////////////////////// FIX
 // lower velocity of the ball
-  ball = new Ball(width/2,height/2,50,50,10,5);
+  ball = new Ball(width/2,height/2,5,5,10,50);
   // Create the right paddle with UP and DOWN as controls
 
   ///////////////////////////////////////////////////////// FIX
@@ -67,6 +67,7 @@ function draw() {
   // and
   //ball.isOffThe Screen() is not the right function, the ball.isOffScreen
   // is the right function
+
   if (ball.isOffScreen()) {
     reset();
   }
