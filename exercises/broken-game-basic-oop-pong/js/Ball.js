@@ -24,10 +24,13 @@ function Ball(x,y,vx,vy,size,speed) {
 //////////////////////////////////////////////// FIX
 //NOTE faction is supposed to be function
 //and
-//typo with updated, update is the right function 
+//typo with updated, update is the right function
 Ball.prototype.update = function () {
   // Update position with velocity
-  this.x = this.vx;
+
+  ////////////////////////////////////////////// FIX
+  // Make the ball able to move in x axis, I added a +
+  this.x += this.vx;
   this.y += this.vy;
 
   // Constrain y position to be on screen
