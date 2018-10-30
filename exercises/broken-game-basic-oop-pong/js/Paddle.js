@@ -10,7 +10,7 @@
 
 //Sets the properties with the provided arguments or defaults
 ////////////////// FIX
-// not supposed to add the capital letter on paddle and Pladdle is a typo
+// typo with Pladdle, supposed to write Paddle
 function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.x = x;
   this.y = y;
