@@ -52,7 +52,9 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
-  if (ball.isOffTheScreen())
+  /////////////////////////////////////////////// FIX
+  // Missed a curly brackets
+  if (ball.isOffTheScreen()) {
     reset();
   }
 
