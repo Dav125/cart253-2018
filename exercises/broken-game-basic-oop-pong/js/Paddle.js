@@ -45,7 +45,9 @@ Paddle.prototype.handleInput = function() {
   }
 //////////////////////////////// FIX
 // forgot to add the word "this." to downkey
-  else if (keyDown(this.downKey)) {
+// and
+// keyDown is the wrong code, keyIsDown is the right code 
+  else if (keyIsDown(this.downKey)) {
     this.vy = -this.speed;
   }
 }
