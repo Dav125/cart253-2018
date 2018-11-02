@@ -345,15 +345,10 @@ function handleBallOffScreen() {
     // Size of the paddle changes
 
     // Left Paddle
-    if (rightptSide === 180) {
-      leftPaddle.h = leftPaddle.h - 5;
+    if (rightptSide === 180 || rightptSide === 105 || rightptSide ===30) {
+      leftPaddle.h = leftPaddle.h - paddleShrinkAmount;
     }
-    else if (rightptSide === 105) {
-      leftPaddle.h = leftPaddle.h - 5;
-    }
-    else if (rightptSide ===30) {
-      leftPaddle.h = leftPaddle.h - 5;
-    }
+
 
     // Right Paddle
     if (leftptSide === 180) {
@@ -367,7 +362,7 @@ function handleBallOffScreen() {
     }
 
 
-}
+  }
 }
 // The reset function
 function reset(){
@@ -391,7 +386,6 @@ function reset(){
   // Reset the size of the paddles
   rightPaddle.h = 70;
   leftPaddle.h = 70;
-
 }
 
 /////////////// END NEW /////////////////////////////////////
@@ -409,9 +403,5 @@ function displayBall() {
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
   rect(paddle.x,paddle.y,paddle.w,paddle.h);
-
-
   paddle.y = constrain(paddle.y, 0, height-paddle.h);
-
-
 }
