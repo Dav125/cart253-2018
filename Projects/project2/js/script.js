@@ -99,7 +99,34 @@ function draw() {
       rightHP = constrain(rightHP,0, 255);
       rightR = rightR + 25;
       rightR = constrain(rightR, 0, 255);
+
     }
+    //Challenge 3: Add an ending
+    // Adding an ending to the game:
+    // when there is no green and the rectangle turns red
+    // the game is over
+    if (rightHP === 0){
+      console.log("Right side wins");
+      rightPaddle.reset();
+      leftPaddle.reset();
+      ball.reset();
+      rightHP = 255;
+      rightR = 0;
+      leftHp = 255;
+      leftR = 0;
+    }
+    else if (leftHP === 0) {
+      console.log("Left side wins");
+      rightPaddle.reset();
+      leftPaddle.reset();
+      ball.reset();
+      rightHP = 255;
+      rightR = 0;
+      leftHp = 255;
+      leftR = 0;
+
+    }
+    ////////////////////////// END NEW //////////////////////////////////
     ball.reset();
   }
 
