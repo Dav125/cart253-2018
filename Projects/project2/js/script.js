@@ -17,7 +17,11 @@ var rightPaddle;
 ///////////////////////////////////////// NEW ////////////////////////////
 // Adding a variable for each sides HP Bar
 var rightHP = 255;
-var LeftHP = 255;
+var leftHP = 255;
+
+// Variables for HP bars to turn red
+var rightR = 0;
+var leftR = 0;
 
 ///////////////////////////////////////// END NEW ////////////////////////
 
@@ -40,7 +44,10 @@ function setup() {
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
-  background(0);
+/////////////////////////////////// NEW /////////////////////////////
+// Change the color of the background
+  background(0,0,100);
+//////////////////////////////// END NEW ///////////////////////////
 
   leftPaddle.handleInput();
   rightPaddle.handleInput();
@@ -55,7 +62,7 @@ function draw() {
 
   //Right side HP
 
-  fill(0,rightHP,0);
+  fill(rightR,rightHP,0);
   rect(440, 30, 40, 40);
   noStroke();
 
@@ -63,7 +70,7 @@ function draw() {
 
   // Left Side HP
 
-  fill(0,LeftHP,0);
+  fill(leftR,leftHP,0);
   rect(140, 30, 40, 40);
   noStroke();
 
@@ -78,12 +85,16 @@ function draw() {
       // Adding a score system
       // Right side score
       console.log("Right side scores a point");
+      leftHP = leftHp - 25;
+      leftR = leftR + 25;
 
 
     }
     else if (ball.x > width){
       // Left side score
       console.log("Left side scores a point");
+      rightHP = rightHP - 25;
+      rightR = rightR + 25;
 
     }
     ball.reset();
