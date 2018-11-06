@@ -54,3 +54,11 @@ Paddle.prototype.display = function() {
   fill(255);
   rect(this.x,this.y,this.w,this.h);
 }
+
+///////////////////////////// NEW ///////////////////////////////
+// Adding a reset function to the paddles
+Paddle.prototype.reset = function(){
+  this.x = this.startX;
+  this.y = this.startY;
+}
+////////////////////////// END NEW //////////////////////////////
