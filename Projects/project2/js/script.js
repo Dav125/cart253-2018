@@ -49,6 +49,28 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
+  /////////////////////////////// NEW //////////////////////////////////////
+  // Challenge 1: Improve the game
+  //Setting up the HP bars for each side
+
+  //Right side HP
+
+  fill(0,rightHP,0);
+  rect(440, 30, 40, 40);
+  noStroke();
+
+
+
+  // Left Side HP
+
+  fill(0,LeftHP,0);
+  rect(140, 30, 40, 40);
+  noStroke();
+
+
+
+  ///////////////////////////// END NEW ///////////////////////////////////
+
   if (ball.isOffScreen()) {
     if (ball.x + ball.size < 0){
       ////////////////////////////// NEW ///////////////////////////////////
@@ -56,6 +78,7 @@ function draw() {
       // Adding a score system
       // Right side score
       console.log("Right side scores a point");
+
 
     }
     else if (ball.x > width){
