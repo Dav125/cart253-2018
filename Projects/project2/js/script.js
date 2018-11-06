@@ -14,6 +14,13 @@ var ball;
 var leftPaddle;
 var rightPaddle;
 
+///////////////////////////////////////// NEW ////////////////////////////
+// Adding a variable for each sides HP Bar
+var rightHP = 255;
+var LeftHP = 255;
+
+///////////////////////////////////////// END NEW ////////////////////////
+
 // setup()
 //
 // Creates the ball and paddles
@@ -49,7 +56,7 @@ function draw() {
       // Adding a score system
       // Right side score
       console.log("Right side scores a point");
-      
+
     }
     else if (ball.x > width){
       // Left side score
