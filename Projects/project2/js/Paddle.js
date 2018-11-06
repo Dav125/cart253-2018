@@ -7,6 +7,11 @@
 //
 // Sets the properties with the provided arguments or defaults
 function Paddle(x,y,w,h,speed,downKey,upKey) {
+///////////////////////// NEW /////////////////////////////////
+  // Setting up variables to reset the position of the paddles
+  this.startX = x;
+  this.startY = y;
+///////////////////////END NEW ///////////////////////////////
   this.x = x;
   this.y = y;
   this.vx = 0;
