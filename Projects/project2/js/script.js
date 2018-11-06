@@ -43,6 +43,19 @@ function draw() {
   rightPaddle.update();
 
   if (ball.isOffScreen()) {
+    if (ball.x + ball.size < 0){
+      ////////////////////////////// NEW ///////////////////////////////////
+      //Challenge 1: Improve the game
+      // Adding a score system
+      // Right side score
+      console.log("Right side scores a point");
+      
+    }
+    else if (ball.x > width){
+      // Left side score
+      console.log("Left side scores a point");
+
+    }
     ball.reset();
   }
 
