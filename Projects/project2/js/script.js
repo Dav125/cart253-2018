@@ -86,7 +86,9 @@ function draw() {
       // Right side score
       console.log("Right side scores a point");
       leftHP = leftHp - 25;
+      leftHP =constrain(leftHP, 0, 255);
       leftR = leftR + 25;
+      leftR = constrain(leftR, 0, 255);
 
 
     }
@@ -94,8 +96,9 @@ function draw() {
       // Left side score
       console.log("Left side scores a point");
       rightHP = rightHP - 25;
+      rightHP = constrain(rightHP,0, 255);
       rightR = rightR + 25;
-
+      rightR = constrain(rightR, 0, 255);
     }
     ball.reset();
   }
