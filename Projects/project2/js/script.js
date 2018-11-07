@@ -11,6 +11,9 @@
 
 // Variable to contain the objects representing our ball and paddles
 var ball;
+//////////////////////////// NEW //////////////////////////////////
+var ballM
+////////////////////////// END NEW //////////////////////////////
 var leftPaddle;
 var rightPaddle;
 
@@ -25,14 +28,12 @@ var leftR = 0;
 
 ///////////////////////////////////////// END NEW ////////////////////////
 ///////////////////////////////////////// NEW  ///////////////////////////
-// Setting up the variables for the game to start
-var gameStart = false;
-
-//Setting up the variable for the game over function
-var gameIsOver = false
-////////////////////////////////////// END NEW ///////////////////////////
 var state = "starts"
-
+////////////////////////////////////// END NEW ///////////////////////////
+/////////////////////////////////// NEW //////////////////////////////
+var leftSize = 60;
+var rightSize = 60;
+/////////////////////////END NEW/////////////////////////////////////
 // setup()
 //
 // Creates the ball and paddles
@@ -41,10 +42,17 @@ function setup() {
   // Create a ball
   ball = new Ball(width / 2, height / 2, 5, 5, 10, 5);
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(width - 10, height / 2, 10, 60, 10, DOWN_ARROW, UP_ARROW);
+  rightPaddle = new Paddle(width - 10, height / 2, 10, rightSize, 10, DOWN_ARROW, UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(0, height / 2, 10, 60, 10, 83, 87);
+  leftPaddle = new Paddle(0, height / 2, 10, leftSize, 10, 83, 87);
+
+  ////////////////////////// NEW /////////////////////////////////
+
+
+  ballM = new BallM(width / 2, height / 4, 15, 10, 10, 1);
+
+  /////////////////////// END NEW ////////////////////////////////
 }
 
 function startScreen() {
@@ -75,17 +83,20 @@ function startScreen() {
 function gameScreen() {
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
+  ballM.handleCollision(leftPaddle);
+  ballM.handleCollision(rightPaddle);
 
   ball.display();
+  ballM.display();
   leftPaddle.display();
   rightPaddle.display();
 
 
-  //  console.log("start the game")
   leftPaddle.handleInput();
   rightPaddle.handleInput();
 
   ball.update();
+  ballM.update();
   leftPaddle.update();
   rightPaddle.update();
 
@@ -141,6 +152,7 @@ function gameScreen() {
       console.log("Right side wins");
       rightPaddle.reset();
       leftPaddle.reset();
+      ball.reset();
       rightHP = 255;
       rightR = 0;
       leftHP = 255;
@@ -151,6 +163,8 @@ function gameScreen() {
       console.log("Left side wins");
       rightPaddle.reset();
       leftPaddle.reset();
+      ball.reset();
+      ballM.reset();
       rightHP = 255;
       rightR = 0;
       leftHP = 255;
@@ -159,6 +173,7 @@ function gameScreen() {
     }
     ////////////////////////// END NEW //////////////////////////////////
     ball.reset();
+    ballM.reset();
   }
 
 }
@@ -198,6 +213,7 @@ function gameOver() {
   noStroke();
   fill(255, 100, 100);
   text("The other player is too tired to play!", width / 2, height / 4);
+
 
   // Once the mouse is pressed, the game starts over
   if (mouseIsPressed) {
