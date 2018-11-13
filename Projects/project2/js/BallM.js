@@ -1,8 +1,8 @@
-// Ball
+// BallM
 //
-// A class to define how a ball behaves. Including bouncing on the top
-// and bottom edges of the canvas, going off the left and right sides,
-// and bouncing off paddles.
+// Unknown ball that behave differently 
+//
+//
 
 // Ball constructor
 //
@@ -65,6 +65,7 @@ BallM.prototype.handleCollision = function(paddle) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
+
     if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
       // If so, move ball back to previous position (by subtracting current velocity)
       this.x -= this.vx;
