@@ -17,20 +17,44 @@ the ground 3 times or else it is gmame
 // setup()
 //
 // variables for the fruits
-var apple
-var orange
-var kiwi
-var banana
-var strawberry
+var apple;
+var orange;
+var kiwi;
+var banana;
+var strawberry;
 
-// You can add more balls by setting a other variable
+// variables for the player's avatar which is it is
+// a blender
+
+var blender;
+
 function setup() {
 createCanvas(640,480);
+
+// Setting-up new fruits drop down
+// Apple
+
+
+// Orange
+
+
+// kiwi
+
+
+// banana
+
+
+// strawberry
+
+
+// Setting up the player avatar blender 
 
 
 }
 
 function draw(){
+
+// Code for the state of the game
 
 
 }
