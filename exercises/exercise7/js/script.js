@@ -1,38 +1,36 @@
 /*****************
 
-Title of Project
-Author Name
+Exercise 7 - Project 3 Prototype
+by David Fong
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+I have no big directions for this assignment yet but
+i'll think something
+
+Oh I have an idea! the game is about catching fruits
+from the air to make a fruit smoothie
+
+Basically, you don't want to have the fruits  drop to
+the ground 3 times or else it is gmame
 
 ******************/
 
 // setup()
 //
-// Description of setup
-var ball1;
-var ball2;
+// variables for the fruits
+var apple
+var orange
+var kiwi
+var banana
+var strawberry
 
 // You can add more balls by setting a other variable
 function setup() {
+createCanvas(640,480);
 
-  createCanvas(640,480);
-  ball1 = new Ball(100,100,5,5,10,10);
-  ball2 = new Ball(200,100,5,5,10,10);
 
 }
 
 function draw(){
-background(0);
-
-ball1.x = width/2;
-
-ball1.update();
-ball1.display();
-
-ball2.update();
-ball2.display();
 
 
 }
