@@ -30,6 +30,9 @@ var kiwiImage;
 var bananaImage;
 var strawberryImage;
 
+//variable for displaying the blender
+var blenderImage;
+
 // variables for the player's avatar which is it is
 // a blender
 var blender;
@@ -38,7 +41,7 @@ var blender;
 // variable for the state of the game
 var state = "start";
 
-// Preload the images for fruit
+// Preload the images for fruits and blender
 function preload() {
 
 appleImage = loadImage("assets/images/Apple.png");
@@ -46,7 +49,7 @@ orangeImage = loadImage("assets/images/Orange.png");
 kiwiImage = loadImage("assets/images/kiwi.png");
 bananaImage = loadImage("assets/images/banana.png");
 strawberryImage = loadImage("assets/images/strawberry.png");
-
+blenderImage = loadImage("assets/images/Blender.png")
 
 }
 
@@ -72,7 +75,7 @@ function setup() {
   strawberry = new Strawberry (random(0,width), height-600, 6, 50, 0);
 
   // Setting up the player avatar blender
-
+  blender = new Blender (width/2, height-80, 100, 10,LEFT_ARROW,RIGHT_ARROW);
 
 }
 
@@ -116,23 +119,38 @@ function draw() {
 // here
 
 function gameScreen() {
+
+blender.handleInput();
+
 apple.display();
 banana.display();
 kiwi.display();
 orange.display();
 strawberry.display();
+blender.display();
 
 apple.update();
 banana.update();
 kiwi.update();
 orange.update();
 strawberry.update();
+blender.update();
 
 apple.isOffScreen();
 banana.isOffScreen();
 kiwi.isOffScreen();
 orange.isOffScreen();
 strawberry.isOffScreen();
+
+apple.handleCollision(blender);
+banana.handleCollision(blender);
+kiwi.handleCollision(blender);
+orange.handleCollision(blender);
+strawberry.handleCollision(blender);
+
+
+
+
 }
 
 
