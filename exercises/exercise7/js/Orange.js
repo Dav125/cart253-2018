@@ -12,9 +12,52 @@ dropped to the floor
 //
 // Description of setup
 
-function setup() {
+function Orange(x,y,vy,size,angle) {
+
+  this.x = x;
+  this.y = y;
+  this.vy = vy;
+  this.size = size;
+  this.angle = angle;
 
 }
-function draw() {
+
+// update the postion of the fruit
+Orange.prototype.update = function () {
+// update the postion when it falls
+this.y = this.y + this.vy
+translate(this.x, this.y);
+rotate(this.angle);
+this.angle += 0.2;
+
+
+
+}
+
+// reset the postion of the x axis when it fall
+Orange.prototype.isOffScreen = function () {
+// the fruit reset its postion appearing on the
+// top
+
+if (this.y > height){
+this.y = height - 600;
+this.x = random(0,width);
+}
+}
+
+//display function
+//
+//Draw the Orange on the screen
+Orange.prototype.display = function() {
+imageMode(CENTER);
+image (orangeImage, this.x, this.y, this.size, this.size);
+}
+
+
+// when the Orange collides with the blender you
+// score a point
+Orange.Prototype.handleCollision = function(blender){
+  // Check if the fruit collides with blender
+
 
 }
