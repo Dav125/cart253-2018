@@ -53,8 +53,14 @@ image (bananaImage, this.x, this.y, this.size, this.size);
 
 // when the banana collides with the blender you
 // score a point
-Banana.Prototype.handleCollision = function(blender){
+Banana.prototype.handleCollision = function(blender){
   // Check if the fruit collides with blender
-
+  if(this.x + this.size> blender.x && this.x < blender.x +blender.size){
+  // Check if the fruits overlaps with the blenderImage
+  if(this.x + this.size > blender.y && this.y < blender.y + blender.size){
+    this.y = height - 600;
+    this.x = random(0,width);
+  }
+  }
 
 }
