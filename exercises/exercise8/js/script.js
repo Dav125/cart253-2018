@@ -1,38 +1,49 @@
 /*****************
 
-Title of Project
-Author Name
+Exercise 8
+David Fong
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+For this exercise, I'll start thinking about shooting fruits
+at something
 
 ******************/
 
-// setup()
-//
-// Description of setup
-var ball1;
-var ball2;
+// variables for the fruits
+var apple;
+var orange;
+var kiwi;
+var banana;
+var strawberry;
 
-// You can add more balls by setting a other variable
-function setup() {
+//variables for display the fruit
+var appleImage;
+var orangeImage;
+var kiwiImage;
+var bananaImage;
+var strawberryImage;
 
-  createCanvas(640,480);
-  ball1 = new Ball(100,100,5,5,10,10);
-  ball2 = new Ball(200,100,5,5,10,10);
+
+// variable for the state of the game
+var state = "start";
+
+// Preload the the images of the fruits
+
+function preload() {
+
+appleImage = loadImage("assets/images/Apple.png");
+orangeImage = loadImage("assets/images/Orange.png");
+kiwiImage = loadImage("assets/images/kiwi.png");
+bananaImage = loadImage("assets/images/banana.png");
+strawberryImage = loadImage("assets/images/strawberry.png");
 
 }
 
-function draw(){
-background(0);
-
-ball1.x = width/2;
-
-ball1.update();
-ball1.display();
-
-ball2.update();
-ball2.display();
-
+//Setup
+function setup(){
+createCanvas(640, 480);
 
 }
+
+
+
+// draw function
